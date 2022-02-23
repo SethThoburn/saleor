@@ -1277,13 +1277,31 @@ enum WebhookEventTypeAsyncEnum {
 type App implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """List of the app's permissions."""
   permissions: [Permission!]
@@ -1340,13 +1358,31 @@ type App implements Node & ObjectWithMetadata {
 }
 
 interface ObjectWithMetadata {
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 }
 
 type MetadataItem {
@@ -1356,6 +1392,19 @@ type MetadataItem {
   """Value of a metadata item."""
   value: String!
 }
+
+"""
+Metadata is a map of key-value pairs, both keys and values are `String`.
+
+Example:
+```
+{
+    "key1": "value1",
+    "key2": "value2"
+}
+```
+"""
+scalar Metadata
 
 """Represents a permission object in a friendly form."""
 type Permission {
@@ -1663,13 +1712,31 @@ enum WebhookSampleEventTypeEnum {
 type Warehouse implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   slug: String!
   email: String!
@@ -1784,13 +1851,31 @@ Represents a shipping zone in the shop. Zones are the concept used only for grou
 type ShippingZone implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   default: Boolean!
 
@@ -1840,13 +1925,31 @@ type ShippingMethodType implements Node & ObjectWithMetadata {
   """Shipping method ID."""
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """Shipping method name."""
   name: String!
@@ -2779,13 +2882,31 @@ type ProductCountableEdge {
 type Product implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   seoTitle: String
   seoDescription: String
   name: String!
@@ -2884,13 +3005,31 @@ Represents a type of product. It defines what attributes are available to produc
 type ProductType implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   slug: String!
   hasVariants: Boolean!
@@ -2994,13 +3133,31 @@ Custom attribute of a product. Attributes can be assigned to products and varian
 type Attribute implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """The input type to use for entering attribute values in the dashboard."""
   inputType: AttributeInputTypeEnum
@@ -3359,13 +3516,31 @@ Represents a single category of products. Categories allow to organize products 
 type Category implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   seoTitle: String
   seoDescription: String
   name: String!
@@ -3480,13 +3655,31 @@ type CategoryTranslation implements Node {
 type ProductVariant implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   sku: String
   product: Product!
@@ -4004,13 +4197,31 @@ type ProductVariantTranslation implements Node {
 type DigitalContent implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   useDefaultSettings: Boolean!
   automaticFulfillment: Boolean!
   contentFile: String!
@@ -4142,13 +4353,31 @@ type Margin {
 type Collection implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   seoTitle: String
   seoDescription: String
   name: String!
@@ -4596,13 +4825,31 @@ A static page that can be manually added by a shop operator through the dashboar
 type Page implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   seoTitle: String
   seoDescription: String
   title: String!
@@ -4634,13 +4881,31 @@ Represents a type of page. It defines what attributes are available to pages of 
 type PageType implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   slug: String!
 
@@ -4715,13 +4980,31 @@ Sales allow creating discounts for categories, collections or products and are v
 type Sale implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   type: SaleType!
   startDate: DateTime!
@@ -4882,13 +5165,31 @@ Vouchers allow giving discounts to particular customers on categories, collectio
 type Voucher implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String
   code: String!
   usageLimit: Int
@@ -5038,13 +5339,31 @@ Represents a single item of the related menu. Can store categories, collection o
 type MenuItem implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   menu: Menu!
   parent: MenuItem
@@ -5070,13 +5389,31 @@ Represents a single menu - an object that is used to help navigate through the s
 type Menu implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   name: String!
   slug: String!
   items: [MenuItem!]
@@ -5304,13 +5641,31 @@ type ShippingMethod implements Node & ObjectWithMetadata {
   """Unique ID of ShippingMethod available for Order."""
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """Type of the shipping method."""
   type: ShippingMethodTypeEnum @deprecated(reason: "This field will be removed in Saleor 4.0.")
@@ -5403,13 +5758,31 @@ type StaffNotificationRecipient implements Node {
 type User implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   email: String!
   firstName: String!
   lastName: String!
@@ -5496,13 +5869,31 @@ type User implements Node & ObjectWithMetadata {
 type Checkout implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   created: DateTime!
   lastChange: DateTime!
   user: User
@@ -5583,13 +5974,31 @@ A gift card is a prepaid electronic payment card accepted in stores. They can be
 type GiftCard implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """Code in format which allows displaying in a user interface."""
   displayCode: String!
@@ -5811,13 +6220,31 @@ type OrderCountableEdge {
 type Order implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   created: DateTime!
   updatedAt: DateTime!
   status: OrderStatus!
@@ -5967,13 +6394,31 @@ enum OrderStatus {
 type Fulfillment implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   fulfillmentOrder: Int!
   status: FulfillmentStatus!
   trackingNumber: String!
@@ -6099,13 +6544,31 @@ enum OrderAction {
 
 """Represents an Invoice."""
 type Invoice implements ObjectWithMetadata & Job & Node {
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
 
   """Job status."""
   status: JobStatusEnum!
@@ -6167,13 +6630,31 @@ enum PaymentChargeStatusEnum {
 type Payment implements Node & ObjectWithMetadata {
   id: ID!
 
-  """
-  List of private metadata items.Requires proper staff permissions to access.
-  """
+  """List of private metadata items. Requires staff permissions to access."""
   privateMetadata: [MetadataItem!]!
+
+  """
+  A single key from private metadata. Requires staff permissions to access. Use GraphQL aliases to fetch multiple keys.
+  """
+  privateMetafield(key: String!): String
+
+  """
+  Private metadata. Requires staff permissions to access. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  privateMetafields(keys: [String!]): Metadata
 
   """List of public metadata items. Can be accessed without permissions."""
   metadata: [MetadataItem!]!
+
+  """
+  A single key from public metadata. Use GraphQL aliases to fetch multiple keys.
+  """
+  metafield(key: String!): String
+
+  """
+  Public metadata. Use `keys` to control which fields you want to include. The default is to include everything.
+  """
+  metafields(keys: [String!]): Metadata
   gateway: String!
   isActive: Boolean!
   created: DateTime!
